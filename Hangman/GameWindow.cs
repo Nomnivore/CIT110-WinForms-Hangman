@@ -14,10 +14,13 @@ namespace HangmanApp
     {
         public HangmanGame game { get; set; }
 
+        public bool PlayAgain { get; private set; } = false;
+
         public GameWindow(HangmanGame game)
         {
             this.game = game;
             InitializeComponent();
+            this.Text = this.Text + this.game.SaveName;
             UpdateWindow();
         }
 
@@ -32,14 +35,27 @@ namespace HangmanApp
 
             if (game.GameOver == true)
             {
-                string message;
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                // show the game over side-panel
+
                 if (game.TriesLeft >= 1)
-                    message = $"You win! The word was '{game.Word}'.";
-                else
-                    message = $"You lose! The word was '{game.Word}'.";
-                MessageBox.Show(message, "Game over!", buttons);
-                this.Close();
+                {
+                    this.GameOverLabel.Text = "You win!";
+                    this.GameOverLabel.ForeColor = Color.MediumSeaGreen;
+                } else
+                {
+                    this.GameOverLabel.Text = "You lose!";
+                    this.GameOverLabel.ForeColor = Color.Brown; // Firebrick is also nice
+                }
+
+                this.GameOverWordLabel.Text = game.Word;
+                this.GameOverPanel.Visible = true;
+
+                // disable keyboard & save buttons
+                foreach (Button key in KeyboardPanel.Controls)
+                {
+                    key.Enabled = false;
+                }
+                this.SaveQuitButton.Enabled = false;
             }
         }
 
@@ -96,5 +112,37 @@ namespace HangmanApp
             UpdateWindow();
         }
 
+        private void SaveQuitButton_Click(object sender, EventArgs e)
+        {
+            SaveGameDialog saveDialog = new SaveGameDialog(game);
+            saveDialog.ShowDialog();
+
+            // only close if game was saved (window not cancelled or X'd)
+            if (saveDialog.Saved)
+                this.Close();
+        }
+
+        private void PlayAgainButton_Click(object sender, EventArgs e)
+        {
+            PlayAgain = true;
+            this.Close();
+        }
+
+        private void GameWindow_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // keyboard shortcuts for letter buttons
+            string keyPressed = e.KeyChar.ToString().ToUpper();
+
+            foreach (Button key in KeyboardPanel.Controls)
+            {
+                if (key.Text == keyPressed)
+                    key.PerformClick();
+            }
+        }
+
+        private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveManager.DeleteIfGameOver(game);
+        }
     }
 }

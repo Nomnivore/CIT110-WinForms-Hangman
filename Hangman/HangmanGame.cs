@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace HangmanApp
@@ -12,6 +13,11 @@ namespace HangmanApp
     public class HangmanGame
     {
         #region PROPERTIES
+
+        /// <summary>
+        /// Unique identifier used for saving to file
+        /// </summary>
+        public string SaveName { get; set; }
 
         private string _word;
         /// <summary>
@@ -49,6 +55,7 @@ namespace HangmanApp
         /// </summary>
         public int TriesLeft { get; set; }
 
+        [JsonIgnore]
         public bool GameOver
         {
             get
@@ -76,56 +83,58 @@ namespace HangmanApp
       |
       |
       |
-=========)", @"  +---+
+========", @"  +---+
   |   |
       |
       |
       |
       |
-=========)", @"  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========)", @"  +---+
+========", @"  +---+
   |   |
   O   |
+      |
+      |
+      |
+========", @"  +---+
+  |   |
+  O   |
   |   |
       |
       |
-=========)", @"  +---+
+========", @"  +---+
   |   |
   O   |
  /|   |
       |
       |
-=========)", @"  +---+
+========", @"  +---+
   |   |
   O   |
  /|\  |
       |
       |
-=========)", @"  +---+
+========", @"  +---+
   |   |
   O   |
  /|\  |
  /    |
       |
-=========)", @"  +---+
+========", @"  +---+
   |   |
   O   |
  /|\  |
  / \  |
       |
-=========)", @"  +---+
+========", @"  +---+
   ^   |
   O   |
  /|\  |
  / \  |
       |
-=========)"
+========"
         };
+
+        [JsonIgnore]
         /// <summary>
         /// Multiline strings used for display in the game window
         /// </summary>
@@ -140,8 +149,9 @@ namespace HangmanApp
         /// <summary>
         /// Pre-compiled regex for checking if letters are not special characters
         /// </summary>
-        private Regex _alphaNumeric = new Regex(@"[a-z]");
+        private Regex _alpha = new Regex(@"[a-z]");
 
+        [JsonIgnore]
         /// <summary>
         /// Display version of the Word, eg. " h _ l l _ - w _ r l _ "
         /// </summary>
@@ -154,7 +164,7 @@ namespace HangmanApp
                 foreach (char ch in Word.ToCharArray())
                 {
                     string let = ch.ToString();
-                    if (_alphaNumeric.IsMatch(let))
+                    if (_alpha.IsMatch(let))
                     {
                         // is a letter
                         if (GoodGuesses.Contains(let))
@@ -182,13 +192,16 @@ namespace HangmanApp
 
 
         #region CONSTRUCTORS
+
         /// <summary>
         /// Default constructor for brand new game
         /// </summary>
         public HangmanGame()
         {
-            this.TotalTries = this.HangmanPics.Count-1;
+            this.TotalTries = this.HangmanPics.Count - 1;
             this.TriesLeft = this.TotalTries;
+
+            this.SaveName = DateTime.Now.ToString("MMdd-HHmm");
 
             // for now, just a basic way to get a word from 2of12.txt
             string[] wordsList = File.ReadAllLines(@"Lists\2of12.txt");
@@ -232,6 +245,7 @@ namespace HangmanApp
 
         public void ProcessCompleteGuess(string guess)
         {
+            // check if word is correct, then add each letter to GoodGuesses
             throw new NotImplementedException();
         }
 

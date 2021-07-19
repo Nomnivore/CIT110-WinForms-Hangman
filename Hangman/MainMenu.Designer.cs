@@ -93,7 +93,6 @@ namespace HangmanApp
             // LoadGameButton
             // 
             this.LoadGameButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LoadGameButton.Enabled = false;
             this.LoadGameButton.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LoadGameButton.Location = new System.Drawing.Point(60, 97);
             this.LoadGameButton.Name = "LoadGameButton";
@@ -102,6 +101,7 @@ namespace HangmanApp
             this.LoadGameButton.TabStop = false;
             this.LoadGameButton.Text = "Load Game";
             this.LoadGameButton.UseVisualStyleBackColor = true;
+            this.LoadGameButton.Click += new System.EventHandler(this.LoadGameButton_Click);
             // 
             // NewGameButton
             // 
@@ -140,6 +140,7 @@ namespace HangmanApp
             // 
             // MainMenu
             // 
+            this.AcceptButton = this.NewGameButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

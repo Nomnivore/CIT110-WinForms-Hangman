@@ -64,8 +64,14 @@ namespace HangmanApp
             this.TriesTitleLabel = new System.Windows.Forms.Label();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SaveQuitButton = new System.Windows.Forms.Button();
+            this.GameOverPanel = new System.Windows.Forms.Panel();
+            this.PlayAgainButton = new System.Windows.Forms.Button();
+            this.GameOverWordLabel = new System.Windows.Forms.Label();
+            this.GameOverSubtitleLabel = new System.Windows.Forms.Label();
+            this.GameOverLabel = new System.Windows.Forms.Label();
             this.KeyboardPanel.SuspendLayout();
             this.TriesPanel.SuspendLayout();
+            this.GameOverPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingLabel
@@ -73,11 +79,11 @@ namespace HangmanApp
             this.DrawingLabel.BackColor = System.Drawing.Color.Transparent;
             this.DrawingLabel.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DrawingLabel.ForeColor = System.Drawing.Color.White;
-            this.DrawingLabel.Location = new System.Drawing.Point(177, 33);
+            this.DrawingLabel.Location = new System.Drawing.Point(164, 33);
             this.DrawingLabel.Name = "DrawingLabel";
-            this.DrawingLabel.Size = new System.Drawing.Size(128, 197);
+            this.DrawingLabel.Size = new System.Drawing.Size(141, 197);
             this.DrawingLabel.TabIndex = 1;
-            this.DrawingLabel.Text = "  +---+\r\n  |   |\r\n  O   |\r\n /|\\  |\r\n / \\  |\r\n      |\r\n=========";
+            this.DrawingLabel.Text = "  +---+\r\n  |   |\r\n  O   |\r\n /|\\  |\r\n / \\  |\r\n      |\r\n=========)";
             // 
             // KeyboardPanel
             // 
@@ -132,6 +138,7 @@ namespace HangmanApp
             this.KeyMButton.Name = "KeyMButton";
             this.KeyMButton.Size = new System.Drawing.Size(33, 33);
             this.KeyMButton.TabIndex = 26;
+            this.KeyMButton.TabStop = false;
             this.KeyMButton.Text = "M";
             this.KeyMButton.UseVisualStyleBackColor = true;
             this.KeyMButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -143,6 +150,7 @@ namespace HangmanApp
             this.KeyNButton.Name = "KeyNButton";
             this.KeyNButton.Size = new System.Drawing.Size(33, 33);
             this.KeyNButton.TabIndex = 25;
+            this.KeyNButton.TabStop = false;
             this.KeyNButton.Text = "N";
             this.KeyNButton.UseVisualStyleBackColor = true;
             this.KeyNButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -154,6 +162,7 @@ namespace HangmanApp
             this.KeyBButton.Name = "KeyBButton";
             this.KeyBButton.Size = new System.Drawing.Size(33, 33);
             this.KeyBButton.TabIndex = 24;
+            this.KeyBButton.TabStop = false;
             this.KeyBButton.Text = "B";
             this.KeyBButton.UseVisualStyleBackColor = true;
             this.KeyBButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -165,6 +174,7 @@ namespace HangmanApp
             this.KeyVButton.Name = "KeyVButton";
             this.KeyVButton.Size = new System.Drawing.Size(33, 33);
             this.KeyVButton.TabIndex = 23;
+            this.KeyVButton.TabStop = false;
             this.KeyVButton.Text = "V";
             this.KeyVButton.UseVisualStyleBackColor = true;
             this.KeyVButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -176,6 +186,7 @@ namespace HangmanApp
             this.KeyCButton.Name = "KeyCButton";
             this.KeyCButton.Size = new System.Drawing.Size(33, 33);
             this.KeyCButton.TabIndex = 22;
+            this.KeyCButton.TabStop = false;
             this.KeyCButton.Text = "C";
             this.KeyCButton.UseVisualStyleBackColor = true;
             this.KeyCButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -187,6 +198,7 @@ namespace HangmanApp
             this.KeyXButton.Name = "KeyXButton";
             this.KeyXButton.Size = new System.Drawing.Size(33, 33);
             this.KeyXButton.TabIndex = 21;
+            this.KeyXButton.TabStop = false;
             this.KeyXButton.Text = "X";
             this.KeyXButton.UseVisualStyleBackColor = true;
             this.KeyXButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -198,6 +210,7 @@ namespace HangmanApp
             this.KeyZButton.Name = "KeyZButton";
             this.KeyZButton.Size = new System.Drawing.Size(33, 33);
             this.KeyZButton.TabIndex = 20;
+            this.KeyZButton.TabStop = false;
             this.KeyZButton.Text = "Z";
             this.KeyZButton.UseVisualStyleBackColor = true;
             this.KeyZButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -209,6 +222,7 @@ namespace HangmanApp
             this.KeyLButton.Name = "KeyLButton";
             this.KeyLButton.Size = new System.Drawing.Size(33, 33);
             this.KeyLButton.TabIndex = 18;
+            this.KeyLButton.TabStop = false;
             this.KeyLButton.Text = "L";
             this.KeyLButton.UseVisualStyleBackColor = true;
             this.KeyLButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -220,6 +234,7 @@ namespace HangmanApp
             this.KeyKButton.Name = "KeyKButton";
             this.KeyKButton.Size = new System.Drawing.Size(33, 33);
             this.KeyKButton.TabIndex = 17;
+            this.KeyKButton.TabStop = false;
             this.KeyKButton.Text = "K";
             this.KeyKButton.UseVisualStyleBackColor = true;
             this.KeyKButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -231,18 +246,19 @@ namespace HangmanApp
             this.KeyJButton.Name = "KeyJButton";
             this.KeyJButton.Size = new System.Drawing.Size(33, 33);
             this.KeyJButton.TabIndex = 16;
+            this.KeyJButton.TabStop = false;
             this.KeyJButton.Text = "J";
             this.KeyJButton.UseVisualStyleBackColor = true;
             this.KeyJButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
             // 
             // KeyHButton
             // 
-            this.KeyHButton.BackColor = System.Drawing.Color.LightGreen;
             this.KeyHButton.Font = new System.Drawing.Font("Lucida Fax", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyHButton.Location = new System.Drawing.Point(215, 49);
             this.KeyHButton.Name = "KeyHButton";
             this.KeyHButton.Size = new System.Drawing.Size(33, 33);
             this.KeyHButton.TabIndex = 15;
+            this.KeyHButton.TabStop = false;
             this.KeyHButton.Text = "H";
             this.KeyHButton.UseVisualStyleBackColor = true;
             this.KeyHButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -254,6 +270,7 @@ namespace HangmanApp
             this.KeyGButton.Name = "KeyGButton";
             this.KeyGButton.Size = new System.Drawing.Size(33, 33);
             this.KeyGButton.TabIndex = 14;
+            this.KeyGButton.TabStop = false;
             this.KeyGButton.Text = "G";
             this.KeyGButton.UseVisualStyleBackColor = true;
             this.KeyGButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -265,6 +282,7 @@ namespace HangmanApp
             this.KeyFButton.Name = "KeyFButton";
             this.KeyFButton.Size = new System.Drawing.Size(33, 33);
             this.KeyFButton.TabIndex = 13;
+            this.KeyFButton.TabStop = false;
             this.KeyFButton.Text = "F";
             this.KeyFButton.UseVisualStyleBackColor = true;
             this.KeyFButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -276,6 +294,7 @@ namespace HangmanApp
             this.KeyDButton.Name = "KeyDButton";
             this.KeyDButton.Size = new System.Drawing.Size(33, 33);
             this.KeyDButton.TabIndex = 12;
+            this.KeyDButton.TabStop = false;
             this.KeyDButton.Text = "D";
             this.KeyDButton.UseVisualStyleBackColor = true;
             this.KeyDButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -287,6 +306,7 @@ namespace HangmanApp
             this.KeySButton.Name = "KeySButton";
             this.KeySButton.Size = new System.Drawing.Size(33, 33);
             this.KeySButton.TabIndex = 11;
+            this.KeySButton.TabStop = false;
             this.KeySButton.Text = "S";
             this.KeySButton.UseVisualStyleBackColor = true;
             this.KeySButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -298,30 +318,31 @@ namespace HangmanApp
             this.KeyAButton.Name = "KeyAButton";
             this.KeyAButton.Size = new System.Drawing.Size(33, 33);
             this.KeyAButton.TabIndex = 10;
+            this.KeyAButton.TabStop = false;
             this.KeyAButton.Text = "A";
             this.KeyAButton.UseVisualStyleBackColor = true;
             this.KeyAButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
             // 
             // KeyPButton
             // 
-            this.KeyPButton.BackColor = System.Drawing.SystemColors.Control;
             this.KeyPButton.Font = new System.Drawing.Font("Lucida Fax", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyPButton.Location = new System.Drawing.Point(362, 10);
             this.KeyPButton.Name = "KeyPButton";
             this.KeyPButton.Size = new System.Drawing.Size(33, 33);
             this.KeyPButton.TabIndex = 9;
+            this.KeyPButton.TabStop = false;
             this.KeyPButton.Text = "P";
             this.KeyPButton.UseVisualStyleBackColor = true;
             this.KeyPButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
             // 
             // KeyOButton
             // 
-            this.KeyOButton.BackColor = System.Drawing.SystemColors.Control;
             this.KeyOButton.Font = new System.Drawing.Font("Lucida Fax", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyOButton.Location = new System.Drawing.Point(322, 10);
             this.KeyOButton.Name = "KeyOButton";
             this.KeyOButton.Size = new System.Drawing.Size(33, 33);
             this.KeyOButton.TabIndex = 8;
+            this.KeyOButton.TabStop = false;
             this.KeyOButton.Text = "O";
             this.KeyOButton.UseVisualStyleBackColor = true;
             this.KeyOButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -333,6 +354,7 @@ namespace HangmanApp
             this.KeyIButton.Name = "KeyIButton";
             this.KeyIButton.Size = new System.Drawing.Size(33, 33);
             this.KeyIButton.TabIndex = 7;
+            this.KeyIButton.TabStop = false;
             this.KeyIButton.Text = "I";
             this.KeyIButton.UseVisualStyleBackColor = true;
             this.KeyIButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -344,6 +366,7 @@ namespace HangmanApp
             this.KeyUButton.Name = "KeyUButton";
             this.KeyUButton.Size = new System.Drawing.Size(33, 33);
             this.KeyUButton.TabIndex = 6;
+            this.KeyUButton.TabStop = false;
             this.KeyUButton.Text = "U";
             this.KeyUButton.UseVisualStyleBackColor = true;
             this.KeyUButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -355,6 +378,7 @@ namespace HangmanApp
             this.KeyYButton.Name = "KeyYButton";
             this.KeyYButton.Size = new System.Drawing.Size(33, 33);
             this.KeyYButton.TabIndex = 5;
+            this.KeyYButton.TabStop = false;
             this.KeyYButton.Text = "Y";
             this.KeyYButton.UseVisualStyleBackColor = true;
             this.KeyYButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -366,6 +390,7 @@ namespace HangmanApp
             this.KeyTButton.Name = "KeyTButton";
             this.KeyTButton.Size = new System.Drawing.Size(33, 33);
             this.KeyTButton.TabIndex = 4;
+            this.KeyTButton.TabStop = false;
             this.KeyTButton.Text = "T";
             this.KeyTButton.UseVisualStyleBackColor = true;
             this.KeyTButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -377,6 +402,7 @@ namespace HangmanApp
             this.KeyRButton.Name = "KeyRButton";
             this.KeyRButton.Size = new System.Drawing.Size(33, 33);
             this.KeyRButton.TabIndex = 3;
+            this.KeyRButton.TabStop = false;
             this.KeyRButton.Text = "R";
             this.KeyRButton.UseVisualStyleBackColor = true;
             this.KeyRButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -388,6 +414,7 @@ namespace HangmanApp
             this.KeyEButton.Name = "KeyEButton";
             this.KeyEButton.Size = new System.Drawing.Size(33, 33);
             this.KeyEButton.TabIndex = 2;
+            this.KeyEButton.TabStop = false;
             this.KeyEButton.Text = "E";
             this.KeyEButton.UseVisualStyleBackColor = true;
             this.KeyEButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -399,6 +426,7 @@ namespace HangmanApp
             this.KeyWButton.Name = "KeyWButton";
             this.KeyWButton.Size = new System.Drawing.Size(33, 33);
             this.KeyWButton.TabIndex = 1;
+            this.KeyWButton.TabStop = false;
             this.KeyWButton.Text = "W";
             this.KeyWButton.UseVisualStyleBackColor = true;
             this.KeyWButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -410,6 +438,7 @@ namespace HangmanApp
             this.KeyQButton.Name = "KeyQButton";
             this.KeyQButton.Size = new System.Drawing.Size(33, 33);
             this.KeyQButton.TabIndex = 0;
+            this.KeyQButton.TabStop = false;
             this.KeyQButton.Text = "Q";
             this.KeyQButton.UseVisualStyleBackColor = true;
             this.KeyQButton.Click += new System.EventHandler(this.OnScreenKeyboardButton_Click);
@@ -419,11 +448,11 @@ namespace HangmanApp
             this.WordLabel.BackColor = System.Drawing.Color.Transparent;
             this.WordLabel.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WordLabel.ForeColor = System.Drawing.Color.White;
-            this.WordLabel.Location = new System.Drawing.Point(27, 243);
+            this.WordLabel.Location = new System.Drawing.Point(0, 243);
             this.WordLabel.Name = "WordLabel";
-            this.WordLabel.Size = new System.Drawing.Size(431, 46);
+            this.WordLabel.Size = new System.Drawing.Size(495, 46);
             this.WordLabel.TabIndex = 3;
-            this.WordLabel.Text = "_ _ _ _ _    _ _ _ _ _";
+            this.WordLabel.Text = "s u p e r c o n d u c t i v i t y";
             this.WordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TriesPanel
@@ -473,7 +502,6 @@ namespace HangmanApp
             // SaveQuitButton
             // 
             this.SaveQuitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SaveQuitButton.Enabled = false;
             this.SaveQuitButton.Font = new System.Drawing.Font("Lucida Fax", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SaveQuitButton.Location = new System.Drawing.Point(16, 43);
             this.SaveQuitButton.Name = "SaveQuitButton";
@@ -482,13 +510,74 @@ namespace HangmanApp
             this.SaveQuitButton.TabStop = false;
             this.SaveQuitButton.Text = "Save && Quit";
             this.SaveQuitButton.UseVisualStyleBackColor = true;
+            this.SaveQuitButton.Click += new System.EventHandler(this.SaveQuitButton_Click);
+            // 
+            // GameOverPanel
+            // 
+            this.GameOverPanel.Controls.Add(this.PlayAgainButton);
+            this.GameOverPanel.Controls.Add(this.GameOverWordLabel);
+            this.GameOverPanel.Controls.Add(this.GameOverSubtitleLabel);
+            this.GameOverPanel.Controls.Add(this.GameOverLabel);
+            this.GameOverPanel.Location = new System.Drawing.Point(12, 88);
+            this.GameOverPanel.Name = "GameOverPanel";
+            this.GameOverPanel.Size = new System.Drawing.Size(133, 130);
+            this.GameOverPanel.TabIndex = 7;
+            this.GameOverPanel.Visible = false;
+            // 
+            // PlayAgainButton
+            // 
+            this.PlayAgainButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PlayAgainButton.Font = new System.Drawing.Font("Lucida Fax", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PlayAgainButton.Location = new System.Drawing.Point(18, 98);
+            this.PlayAgainButton.Name = "PlayAgainButton";
+            this.PlayAgainButton.Size = new System.Drawing.Size(94, 25);
+            this.PlayAgainButton.TabIndex = 6;
+            this.PlayAgainButton.TabStop = false;
+            this.PlayAgainButton.Text = "Play Again";
+            this.PlayAgainButton.UseVisualStyleBackColor = true;
+            this.PlayAgainButton.Click += new System.EventHandler(this.PlayAgainButton_Click);
+            // 
+            // GameOverWordLabel
+            // 
+            this.GameOverWordLabel.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GameOverWordLabel.ForeColor = System.Drawing.Color.White;
+            this.GameOverWordLabel.Location = new System.Drawing.Point(1, 57);
+            this.GameOverWordLabel.Name = "GameOverWordLabel";
+            this.GameOverWordLabel.Size = new System.Drawing.Size(131, 35);
+            this.GameOverWordLabel.TabIndex = 2;
+            this.GameOverWordLabel.Text = "superconductivity";
+            this.GameOverWordLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // GameOverSubtitleLabel
+            // 
+            this.GameOverSubtitleLabel.AutoSize = true;
+            this.GameOverSubtitleLabel.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GameOverSubtitleLabel.ForeColor = System.Drawing.Color.White;
+            this.GameOverSubtitleLabel.Location = new System.Drawing.Point(4, 39);
+            this.GameOverSubtitleLabel.Name = "GameOverSubtitleLabel";
+            this.GameOverSubtitleLabel.Size = new System.Drawing.Size(127, 18);
+            this.GameOverSubtitleLabel.TabIndex = 1;
+            this.GameOverSubtitleLabel.Text = "The word was:";
+            // 
+            // GameOverLabel
+            // 
+            this.GameOverLabel.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GameOverLabel.ForeColor = System.Drawing.Color.Brown;
+            this.GameOverLabel.Location = new System.Drawing.Point(0, 1);
+            this.GameOverLabel.Name = "GameOverLabel";
+            this.GameOverLabel.Size = new System.Drawing.Size(133, 34);
+            this.GameOverLabel.TabIndex = 0;
+            this.GameOverLabel.Text = "You lose!";
+            this.GameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GameWindow
             // 
+            this.AcceptButton = this.SolveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(496, 450);
+            this.Controls.Add(this.GameOverPanel);
             this.Controls.Add(this.SaveQuitButton);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.TriesPanel);
@@ -496,14 +585,19 @@ namespace HangmanApp
             this.Controls.Add(this.KeyboardPanel);
             this.Controls.Add(this.DrawingLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "GameWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Hangman - Playing";
+            this.Text = "Hangman - ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GameWindow_KeyPress);
             this.KeyboardPanel.ResumeLayout(false);
             this.TriesPanel.ResumeLayout(false);
             this.TriesPanel.PerformLayout();
+            this.GameOverPanel.ResumeLayout(false);
+            this.GameOverPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -552,6 +646,11 @@ namespace HangmanApp
         private System.Windows.Forms.Label TriesTitleLabel;
         private System.Windows.Forms.Button QuitButton;
         private System.Windows.Forms.Button SaveQuitButton;
+        private System.Windows.Forms.Panel GameOverPanel;
+        private System.Windows.Forms.Label GameOverLabel;
+        private System.Windows.Forms.Button PlayAgainButton;
+        private System.Windows.Forms.Label GameOverWordLabel;
+        private System.Windows.Forms.Label GameOverSubtitleLabel;
     }
 }
 

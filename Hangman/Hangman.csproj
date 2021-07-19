@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>HangmanApp</RootNamespace>
   </PropertyGroup>
@@ -15,6 +15,12 @@
 
   <ItemGroup>
     <Folder Include="Lists\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="SaveGameDialog - Copy.resx">
+      <DependentUpon>SaveGameDialog.resx</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
