@@ -31,7 +31,7 @@ namespace HangmanApp
         {
             this.DrawingLabel = new System.Windows.Forms.Label();
             this.KeyboardPanel = new System.Windows.Forms.Panel();
-            this.SolveButton = new System.Windows.Forms.Button();
+            this.HintButton = new System.Windows.Forms.Button();
             this.KeyMButton = new System.Windows.Forms.Button();
             this.KeyNButton = new System.Windows.Forms.Button();
             this.KeyBButton = new System.Windows.Forms.Button();
@@ -69,9 +69,13 @@ namespace HangmanApp
             this.GameOverWordLabel = new System.Windows.Forms.Label();
             this.GameOverSubtitleLabel = new System.Windows.Forms.Label();
             this.GameOverLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.HintsNumLabel = new System.Windows.Forms.Label();
+            this.HintsTitleLabel = new System.Windows.Forms.Label();
             this.KeyboardPanel.SuspendLayout();
             this.TriesPanel.SuspendLayout();
             this.GameOverPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingLabel
@@ -87,7 +91,7 @@ namespace HangmanApp
             // 
             // KeyboardPanel
             // 
-            this.KeyboardPanel.Controls.Add(this.SolveButton);
+            this.KeyboardPanel.Controls.Add(this.HintButton);
             this.KeyboardPanel.Controls.Add(this.KeyMButton);
             this.KeyboardPanel.Controls.Add(this.KeyNButton);
             this.KeyboardPanel.Controls.Add(this.KeyBButton);
@@ -119,17 +123,19 @@ namespace HangmanApp
             this.KeyboardPanel.Size = new System.Drawing.Size(431, 123);
             this.KeyboardPanel.TabIndex = 2;
             // 
-            // SolveButton
+            // HintButton
             // 
-            this.SolveButton.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SolveButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.SolveButton.Location = new System.Drawing.Point(323, 88);
-            this.SolveButton.Name = "SolveButton";
-            this.SolveButton.Size = new System.Drawing.Size(72, 33);
-            this.SolveButton.TabIndex = 27;
-            this.SolveButton.Text = "Solve...";
-            this.SolveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SolveButton.UseVisualStyleBackColor = true;
+            this.HintButton.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HintButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.HintButton.Location = new System.Drawing.Point(323, 88);
+            this.HintButton.Name = "HintButton";
+            this.HintButton.Size = new System.Drawing.Size(72, 33);
+            this.HintButton.TabIndex = 27;
+            this.HintButton.TabStop = false;
+            this.HintButton.Text = "Hint..";
+            this.HintButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.HintButton.UseVisualStyleBackColor = true;
+            this.HintButton.Click += new System.EventHandler(this.HintButton_Click);
             // 
             // KeyMButton
             // 
@@ -570,13 +576,45 @@ namespace HangmanApp
             this.GameOverLabel.Text = "You lose!";
             this.GameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.HintsNumLabel);
+            this.panel1.Controls.Add(this.HintsTitleLabel);
+            this.panel1.Location = new System.Drawing.Point(320, 106);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(164, 55);
+            this.panel1.TabIndex = 8;
+            // 
+            // HintsNumLabel
+            // 
+            this.HintsNumLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HintsNumLabel.ForeColor = System.Drawing.Color.White;
+            this.HintsNumLabel.Location = new System.Drawing.Point(9, 24);
+            this.HintsNumLabel.Name = "HintsNumLabel";
+            this.HintsNumLabel.Size = new System.Drawing.Size(57, 18);
+            this.HintsNumLabel.TabIndex = 1;
+            this.HintsNumLabel.Text = "1";
+            this.HintsNumLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // HintsTitleLabel
+            // 
+            this.HintsTitleLabel.AutoSize = true;
+            this.HintsTitleLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HintsTitleLabel.ForeColor = System.Drawing.Color.White;
+            this.HintsTitleLabel.Location = new System.Drawing.Point(9, 6);
+            this.HintsTitleLabel.Name = "HintsTitleLabel";
+            this.HintsTitleLabel.Size = new System.Drawing.Size(118, 18);
+            this.HintsTitleLabel.TabIndex = 0;
+            this.HintsTitleLabel.Text = "Hints Left:";
+            // 
             // GameWindow
             // 
-            this.AcceptButton = this.SolveButton;
+            this.AcceptButton = this.HintButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(496, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.GameOverPanel);
             this.Controls.Add(this.SaveQuitButton);
             this.Controls.Add(this.QuitButton);
@@ -598,6 +636,8 @@ namespace HangmanApp
             this.TriesPanel.PerformLayout();
             this.GameOverPanel.ResumeLayout(false);
             this.GameOverPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -639,7 +679,7 @@ namespace HangmanApp
         //private System.Windows.Forms.Label labelTriesTitle;
         private System.Windows.Forms.Label DrawingLabel;
         private System.Windows.Forms.Panel KeyboardPanel;
-        private System.Windows.Forms.Button SolveButton;
+        private System.Windows.Forms.Button HintButton;
         private System.Windows.Forms.Label WordLabel;
         private System.Windows.Forms.Panel TriesPanel;
         private System.Windows.Forms.Label TriesNumLabel;
@@ -651,6 +691,9 @@ namespace HangmanApp
         private System.Windows.Forms.Button PlayAgainButton;
         private System.Windows.Forms.Label GameOverWordLabel;
         private System.Windows.Forms.Label GameOverSubtitleLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label HintsNumLabel;
+        private System.Windows.Forms.Label HintsTitleLabel;
     }
 }
 

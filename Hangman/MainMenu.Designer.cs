@@ -30,9 +30,9 @@ namespace HangmanApp
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.CreditsLabel = new System.Windows.Forms.Label();
+            this.AboutLabel = new System.Windows.Forms.LinkLabel();
             this.QuitButton = new System.Windows.Forms.Button();
-            this.OptionsButton = new System.Windows.Forms.Button();
+            this.AboutButton = new System.Windows.Forms.Button();
             this.LoadGameButton = new System.Windows.Forms.Button();
             this.NewGameButton = new System.Windows.Forms.Button();
             this.TitleLabel = new System.Windows.Forms.Label();
@@ -42,9 +42,9 @@ namespace HangmanApp
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.CreditsLabel);
+            this.MainPanel.Controls.Add(this.AboutLabel);
             this.MainPanel.Controls.Add(this.QuitButton);
-            this.MainPanel.Controls.Add(this.OptionsButton);
+            this.MainPanel.Controls.Add(this.AboutButton);
             this.MainPanel.Controls.Add(this.LoadGameButton);
             this.MainPanel.Controls.Add(this.NewGameButton);
             this.MainPanel.Location = new System.Drawing.Point(0, 98);
@@ -52,17 +52,19 @@ namespace HangmanApp
             this.MainPanel.Size = new System.Drawing.Size(258, 287);
             this.MainPanel.TabIndex = 0;
             // 
-            // CreditsLabel
+            // AboutLabel
             // 
-            this.CreditsLabel.AutoSize = true;
-            this.CreditsLabel.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.CreditsLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.CreditsLabel.Location = new System.Drawing.Point(207, 269);
-            this.CreditsLabel.Name = "CreditsLabel";
-            this.CreditsLabel.Size = new System.Drawing.Size(48, 15);
-            this.CreditsLabel.TabIndex = 4;
-            this.CreditsLabel.Text = "Credits";
-            this.CreditsLabel.Click += new System.EventHandler(this.CreditsLabel_Click);
+            this.AboutLabel.AutoSize = true;
+            this.AboutLabel.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.AboutLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.AboutLabel.Location = new System.Drawing.Point(207, 269);
+            this.AboutLabel.Name = "AboutLabel";
+            this.AboutLabel.Size = new System.Drawing.Size(44, 15);
+            this.AboutLabel.TabIndex = 4;
+            this.AboutLabel.TabStop = true;
+            this.AboutLabel.Text = "About";
+            this.AboutLabel.Visible = false;
+            this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // QuitButton
             // 
@@ -77,18 +79,18 @@ namespace HangmanApp
             this.QuitButton.UseVisualStyleBackColor = true;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
-            // OptionsButton
+            // AboutButton
             // 
-            this.OptionsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.OptionsButton.Enabled = false;
-            this.OptionsButton.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OptionsButton.Location = new System.Drawing.Point(60, 151);
-            this.OptionsButton.Name = "OptionsButton";
-            this.OptionsButton.Size = new System.Drawing.Size(142, 39);
-            this.OptionsButton.TabIndex = 2;
-            this.OptionsButton.TabStop = false;
-            this.OptionsButton.Text = "Options";
-            this.OptionsButton.UseVisualStyleBackColor = true;
+            this.AboutButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AboutButton.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AboutButton.Location = new System.Drawing.Point(60, 151);
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.Size = new System.Drawing.Size(142, 39);
+            this.AboutButton.TabIndex = 2;
+            this.AboutButton.TabStop = false;
+            this.AboutButton.Text = "About";
+            this.AboutButton.UseVisualStyleBackColor = true;
+            this.AboutButton.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // LoadGameButton
             // 
@@ -164,11 +166,11 @@ namespace HangmanApp
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button NewGameButton;
         private System.Windows.Forms.Button QuitButton;
-        private System.Windows.Forms.Button OptionsButton;
+        private System.Windows.Forms.Button AboutButton;
         private System.Windows.Forms.Button LoadGameButton;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label SubtitleLabel;
-        private System.Windows.Forms.Label CreditsLabel;
+        private System.Windows.Forms.LinkLabel AboutLabel;
     }
 }
 

@@ -24,6 +24,9 @@ namespace HangmanApp
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
+            MessageBox.Show("Thanks for playing!");
+
             // exit the application
             this.Close();
         }
@@ -73,10 +76,10 @@ namespace HangmanApp
             }
         }
 
-        private void CreditsLabel_Click(object sender, EventArgs e)
+        private void AboutLabel_Click(object sender, EventArgs e)
         {
-
+            AboutScreen about = new AboutScreen();
+            about.ShowDialog();
         }
-
     }
 }

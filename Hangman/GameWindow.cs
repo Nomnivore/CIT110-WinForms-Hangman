@@ -32,6 +32,7 @@ namespace HangmanApp
             UpdateKeys();
             UpdateWord();
             UpdateTriesLeft();
+            UpdateHints();
 
             if (game.GameOver == true)
             {
@@ -55,6 +56,7 @@ namespace HangmanApp
                 {
                     key.Enabled = false;
                 }
+                this.HintButton.Enabled = false;
                 this.SaveQuitButton.Enabled = false;
             }
         }
@@ -94,6 +96,14 @@ namespace HangmanApp
         private void UpdateTriesLeft()
         {
             TriesNumLabel.Text = game.TriesLeft.ToString();
+        }
+
+        private void UpdateHints()
+        {
+            if (game.HintsRemaining <= 0)
+                this.HintButton.Enabled = false;
+
+            this.HintsNumLabel.Text = game.HintsRemaining.ToString();
         }
 
         #endregion
@@ -143,6 +153,12 @@ namespace HangmanApp
         private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveManager.DeleteIfGameOver(game);
+        }
+
+        private void HintButton_Click(object sender, EventArgs e)
+        {
+            this.game.ProcessHint();
+            UpdateWindow();
         }
     }
 }

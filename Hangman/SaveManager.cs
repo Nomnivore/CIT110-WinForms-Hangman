@@ -29,15 +29,15 @@ namespace HangmanApp
         {
             Utf8JsonReader utf8Reader = new Utf8JsonReader(bytes);
             HangmanGame loadedGame;
-            //try
-            //{
-            //    loadedGame = JsonSerializer.Deserialize<HangmanGame>(ref utf8Reader);
+            try
+            {
+                loadedGame = JsonSerializer.Deserialize<HangmanGame>(ref utf8Reader);
 
-            //} catch (JsonException e)
-            //{
-            //    loadedGame = null;
-            //}
-            loadedGame = JsonSerializer.Deserialize<HangmanGame>(ref utf8Reader);
+            }
+            catch (JsonException e)
+            {
+                loadedGame = null;
+            }
             return loadedGame;
         }
 

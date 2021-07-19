@@ -55,6 +55,8 @@ namespace HangmanApp
         /// </summary>
         public int TriesLeft { get; set; }
 
+        public int HintsRemaining { get; set; } = 1;
+
         [JsonIgnore]
         public bool GameOver
         {
@@ -223,7 +225,6 @@ namespace HangmanApp
             if (let.Length > 1)
             {
                 // method was triggered by the Solve button and sent more than 1 character
-                ProcessCompleteGuess(let);
                 return;
             }
 
@@ -243,10 +244,27 @@ namespace HangmanApp
             }
         }
 
-        public void ProcessCompleteGuess(string guess)
+        public void ProcessHint()
         {
-            // check if word is correct, then add each letter to GoodGuesses
-            throw new NotImplementedException();
+            if (HintsRemaining <= 0)
+                return;
+            // only allow so many hints (1)
+            HintsRemaining -= 1;
+
+            // pick random letter in word that hasn't been guessed yet
+            bool letterChosen = false;
+            string letter;
+            Random rng = new Random();
+            do
+            {
+                letter = Word[rng.Next(Word.Length)].ToString();
+                if (!GoodGuesses.Contains(letter))
+                    letterChosen = true;
+
+            } while (!letterChosen);
+
+            // add to guesses
+            GoodGuesses.Add(letter);
         }
 
         #endregion
