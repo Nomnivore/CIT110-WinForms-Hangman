@@ -22,6 +22,14 @@ namespace HangmanApp
             InitializeComponent();
             this.Text = this.Text + this.game.SaveName;
             UpdateWindow();
+
+            if (this.WordLabel.Text.Length >= 34)
+            {
+                this.WordLabel.Font = new System.Drawing.Font("Courier New", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            } else
+            {
+                this.WordLabel.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            }
         }
 
         #region WINDOW UPDATING
@@ -50,6 +58,7 @@ namespace HangmanApp
 
                 this.GameOverWordLabel.Text = game.Word;
                 this.GameOverPanel.Visible = true;
+                this.AcceptButton = this.PlayAgainButton;
 
                 // disable keyboard & save buttons
                 foreach (Button key in KeyboardPanel.Controls)

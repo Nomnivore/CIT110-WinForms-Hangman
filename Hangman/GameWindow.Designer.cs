@@ -452,13 +452,13 @@ namespace HangmanApp
             // WordLabel
             // 
             this.WordLabel.BackColor = System.Drawing.Color.Transparent;
-            this.WordLabel.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.WordLabel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WordLabel.ForeColor = System.Drawing.Color.White;
-            this.WordLabel.Location = new System.Drawing.Point(0, 243);
+            this.WordLabel.Location = new System.Drawing.Point(0, 230);
             this.WordLabel.Name = "WordLabel";
-            this.WordLabel.Size = new System.Drawing.Size(495, 46);
+            this.WordLabel.Size = new System.Drawing.Size(495, 76);
             this.WordLabel.TabIndex = 3;
-            this.WordLabel.Text = "s u p e r c o n d u c t i v i t y";
+            this.WordLabel.Text = "E X T R A T E R R I T O R I A L I T Y";
             this.WordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TriesPanel
@@ -551,7 +551,7 @@ namespace HangmanApp
             this.GameOverWordLabel.Name = "GameOverWordLabel";
             this.GameOverWordLabel.Size = new System.Drawing.Size(131, 35);
             this.GameOverWordLabel.TabIndex = 2;
-            this.GameOverWordLabel.Text = "superconductivity";
+            this.GameOverWordLabel.Text = "extraterritoriality";
             this.GameOverWordLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // GameOverSubtitleLabel
