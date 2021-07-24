@@ -12,8 +12,14 @@ namespace HangmanApp
 {
     public partial class GameWindow : Form
     {
+        /// <summary>
+        /// Reference to the Hangmangame object model
+        /// </summary>
         public HangmanGame game { get; set; }
 
+        /// <summary>
+        /// User's choice to play a new game without returning to menu
+        /// </summary>
         public bool PlayAgain { get; private set; } = false;
 
         public GameWindow(HangmanGame game)
@@ -34,6 +40,9 @@ namespace HangmanApp
 
         #region WINDOW UPDATING
 
+        /// <summary>
+        /// Calls other Update methods to change various label and button properties based on game state
+        /// </summary>
         private void UpdateWindow()
         {
             UpdateDrawing();
@@ -70,6 +79,9 @@ namespace HangmanApp
             }
         }
 
+        /// <summary>
+        /// Sets the hangman stick figure to the correct state
+        /// </summary>
         private void UpdateDrawing()
         {
             if (game.TriesLeft <= 0)
@@ -78,6 +90,9 @@ namespace HangmanApp
                 DrawingLabel.Text = game.HangmanPics[game.TotalTries - game.TriesLeft];
         }
 
+        /// <summary>
+        /// Disables and recolors keyboard buttons if guessed
+        /// </summary>
         private void UpdateKeys()
         {
             foreach (Button key in KeyboardPanel.Controls)
@@ -97,16 +112,25 @@ namespace HangmanApp
             }
         }
 
+        /// <summary>
+        /// Updates the underscore'd word to display guessed letters
+        /// </summary>
         private void UpdateWord()
         {
             WordLabel.Text = game.DisplayWord.ToUpper();
         }
 
+        /// <summary>
+        /// Update the Tries Left counter to show how many incorrect guesses remain
+        /// </summary>
         private void UpdateTriesLeft()
         {
             TriesNumLabel.Text = game.TriesLeft.ToString();
         }
 
+        /// <summary>
+        /// Update the Hints left counter to show how many hint uses remain
+        /// </summary>
         private void UpdateHints()
         {
             if (game.HintsRemaining <= 0)

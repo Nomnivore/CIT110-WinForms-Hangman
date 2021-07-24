@@ -55,6 +55,9 @@ namespace HangmanApp
         /// </summary>
         public int TriesLeft { get; set; }
 
+        /// <summary>
+        /// Number of times the user can hit the 'Hint' button in this game
+        /// </summary>
         public int HintsRemaining { get; set; } = 1;
 
         [JsonIgnore]
@@ -218,15 +221,16 @@ namespace HangmanApp
 
         #region METHODS
 
+        /// <summary>
+        /// Interface method for guessing a letter in the word
+        /// </summary>
+        /// <param name="let">String of length 1 to represent the guess</param>
         public void ProcessGuess(string let)
         {
             let = let.ToLower(); // just in case it isn't lowercased already
 
             if (let.Length > 1)
-            {
-                // method was triggered by the Solve button and sent more than 1 character
                 return;
-            }
 
             // guard clause to make sure it hasn't been guessed already (keys should not allow this)
             if (GoodGuesses.Contains(let) || BadGuesses.Contains(let))
@@ -244,6 +248,9 @@ namespace HangmanApp
             }
         }
 
+        /// <summary>
+        /// Interface method to use a Hint (if there are any remaining)
+        /// </summary>
         public void ProcessHint()
         {
             if (HintsRemaining <= 0)

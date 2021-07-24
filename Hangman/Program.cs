@@ -14,7 +14,7 @@ namespace HangmanApp
 //      Description: A fully-functioning WinForms program to play Hangman.
 //      Author: Kyle Warner
 //      Date Created: July 10th, 2021
-//      Last Modified: July 19th, 2021
+//      Last Modified: July 24th, 2021
 //      ************************************
 
 
