@@ -94,6 +94,8 @@ namespace HangmanApp
         {
             if (game.GameOver)
             {
+                // create directory if it doesn't exist
+                System.IO.Directory.CreateDirectory(SaveDir);
                 FileInfo file = new FileInfo(Path.Combine(SaveDir, $"{game.SaveName}.txt"));
                 file.Delete();
             }
